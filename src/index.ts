@@ -7,6 +7,7 @@ import { __prod__ } from './constants';
 import microConfig from './mikro-orm.config';
 import { HelloResolver } from "./resolvers/hello"
 import { PostResolver } from "./resolvers/post";
+import { UserResolver } from "./resolvers/user";
 
 
 const main = async () => {
@@ -18,7 +19,7 @@ const main = async () => {
 
     const apolloServer = new ApolloServer({
       schema: await buildSchema({
-        resolvers: [HelloResolver, PostResolver],
+        resolvers: [HelloResolver, PostResolver, UserResolver],
         validate: false,
       }),
       context: () => ({ em: orm.em }) // how graphql resolvers will access the orm. can also access req/res from express.

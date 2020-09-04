@@ -20,11 +20,11 @@
     - npx mikro-orm migration:list     # List all executed migrations
     - npx mikro-orm migration:pending  # List all pending migrations
 
-# GraphQL
+# Type-GraphQL
+- uses capitalized types (as opposed to lowercase in TypeScript)
   ## Type-GraphQL -> Mikro-ORM
     - entities are not graphql types. type-graphql can turn entitiies into types with the decorators: @ObjectType() and @Field().
-    - @Field() can be omitted or commented out to hide a db column fro mthe graphql schema.
+    - @Field() can be omitted or commented out to hide a db column from the graphql schema.
+  ## Resolvers
+    - type-graphql can infer type through typescript type most times. May need to add both in some circumstances.
 
-# Type-GraphQL
-  ## Notes
-    - uses capitalized types (as opposed to lowercase in TypeScript)

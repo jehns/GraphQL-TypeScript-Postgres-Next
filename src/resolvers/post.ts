@@ -3,7 +3,7 @@ import { Resolver, Query, Ctx, Arg, Int, Mutation } from "type-graphql";
 import { Post } from "../entities/Post";
 
 
-// typescript type and type-graphql type must both be set.
+// type-graphql can infer type through typescript type. both types shown here for clarity. May need to add both in some circumstances.
 @Resolver()
 export class PostResolver {
   @Query(() => [Post])
