@@ -38,7 +38,7 @@ const main = async () => {
         },
         secret: '12345', // change to env var
         resave: false,
-
+        saveUninitialized: false
       })
     )
 

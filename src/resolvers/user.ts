@@ -1,5 +1,5 @@
 import { MyContext } from './../types';
-import { Resolver, Mutation, Arg, InputType, Field, Ctx, ObjectType } from "type-graphql";
+import { Resolver, Mutation, Arg, InputType, Field, Ctx, ObjectType, Query } from "type-graphql";
 import { User } from '../entities/User';
 import argon2 from 'argon2'
 
@@ -42,8 +42,22 @@ export class UserResolver {
     const hashedPassword = await argon2.hash(options.password)
     const user = ctx.em.create(User, {username: options.username, password: hashedPassword})
     await ctx.em.persistAndFlush(user)
+    ctx.req.session.userId = user.id // create session
     return user
   }
+
+  @Query(() => User, {nullable: true})
+  async me(
+    @Ctx() ctx: MyContext
+  ) {
+    // not logged in
+    if (!ctx.req.session.userId) {
+      return null
+    }
+    const user = await ctx.em.findOne(User, {id: ctx.req.session.userId})
+    return user
+  }
+
 
   @Mutation(() => UserResponse)
   async login(
@@ -68,6 +82,9 @@ export class UserResolver {
         }]
       }
     }
+
+    ctx.req.session.userId = user.id
+
     return {
       user
     }
