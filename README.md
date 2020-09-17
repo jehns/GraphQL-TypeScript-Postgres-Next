@@ -1,5 +1,4 @@
-# starter for:
-  - React
+# Project base for:
   - TypeScript
   - GraphQL
   - Apollo
@@ -7,7 +6,7 @@
   - PostgreSQL
   - MikroORM
   - Redis
-  - Next.js
+  - React / Next.js
   - TypeGraphQL
   - Chakra
 
