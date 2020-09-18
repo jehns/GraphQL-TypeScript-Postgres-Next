@@ -1,9 +1,10 @@
 import path from "path";
 
-import { Post } from "./entities/Post";
 import { __prod__ } from "./constants";
 import { MikroORM } from "@mikro-orm/core";
+import { Post } from "./entities/Post";
 import { User } from "./entities/User";
+
 
 export default {
   migrations: {
