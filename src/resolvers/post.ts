@@ -19,7 +19,6 @@ export class PostResolver {
     return ctx.em.findOne(Post, { id });
   }
 
-  // to create with a nullable field => { nullable: true }
   @Mutation(() => Post)
   async createPost(
     @Arg('title', () => String) title: string,
@@ -33,7 +32,7 @@ export class PostResolver {
   @Mutation(() => Post, {nullable: true})
   async updatePost(
     @Arg('id', () => Int) id: number,
-    @Arg("title", () => String, {nullable: true}) title: string,
+    @Arg("title", () => String, {nullable: true}) title: string, // to create with a nullable field => { nullable: true }
     @Ctx() ctx: MyContext
     ): Promise<Post | null> {
       const post = await ctx.em.findOne(Post, {id})
