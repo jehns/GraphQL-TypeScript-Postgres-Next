@@ -52,9 +52,9 @@ export class PostResolver {
     @Ctx() ctx: MyContext
     ): Promise<boolean> {
       try {
-        // need to refactor - does not error if post does not exist
-        await ctx.em.nativeDelete(Post, {id})
-        return true
+        // need to refactor -- does not error if post does not exist
+        await ctx.em.nativeDelete(Post, { id });
+        return true;
       } catch (error) {
         return false
       }

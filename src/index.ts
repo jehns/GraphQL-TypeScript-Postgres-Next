@@ -36,7 +36,7 @@ const main = async () => {
           secure: __prod__, // cookie only works in https
           sameSite: 'lax'
         },
-        secret: '12345', // change to env var
+        secret: '12345', // for unsigning cookies (turns cookie in key on redis session). change to env var.
         resave: false,
         saveUninitialized: false
       })
